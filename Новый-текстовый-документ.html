@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Образовательный центр | Курсы для вашего роста</title>
+    <!-- Google Fonts & Font Awesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #1e293b;
+            background-color: #ffffff;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Header */
+        header {
+            background: #ffffff;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            flex-wrap: wrap;
+        }
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #4f46e5;
+        }
+        .logo span {
+            color: #f97316;
+        }
+        .nav {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+        }
+        .nav a {
+            text-decoration: none;
+            color: #1e293b;
+            font-weight: 500;
+            transition: 0.2s;
+        }
+        .nav a:hover {
+            color: #4f46e5;
+        }
+        .btn-outline {
+            border: 2px solid #4f46e5;
+            background: transparent;
+            padding: 8px 20px;
+            border-radius: 40px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .btn-outline:hover {
+            background: #4f46e5;
+            color: white;
+        }
+        .mobile-menu-btn {
+            display: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+        }
+
+        /* Buttons */
+        .btn-primary {
+            background: #4f46e5;
+            color: white;
+            border: none;
+            padding: 12px 32px;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: 0.2s;
+            display: inline-block;
+            text-decoration: none;
+        }
+        .btn-primary:hover {
+            background: #4338ca;
+            transform: translateY(-2px);
+        }
+        .btn-secondary {
+            background: white;
+            color: #4f46e5;
+            border: 2px solid #4f46e5;
+            padding: 12px 32px;
+            border-radius: 40px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: 0.2s;
+        }
+        .btn-secondary:hover {
+            background: #4f46e5;
+            color: white;
+        }
+
+        /* Hero */
+        .hero {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #f8fafc 0%, #eef2ff 100%);
+        }
+        .hero-grid {
+            display: flex;
+            align-items: center;
+            gap: 48px;
+            flex-wrap: wrap;
+        }
+        .hero-content {
+            flex: 1;
+        }
+        .hero-content h1 {
+            font-size: 3rem;
+            line-height: 1.2;
+            margin-bottom: 24px;
+            font-weight: 800;
+        }
+        .hero-content p {
+            font-size: 1.2rem;
+            color: #475569;
+            margin-bottom: 32px;
+        }
+        .hero-image {
+            flex: 1;
+            text-align: center;
+        }
+        .hero-image img {
+            max-width: 100%;
+            border-radius: 32px;
+            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.1);
+        }
+
+        /* Features */
+        .features {
+            padding: 80px 0;
+            background: white;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 48px;
+        }
+        .features-grid {
+            display: flex;
+            gap: 40px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .feature-card {
+            flex: 1;
+            min-width: 220px;
+            text-align: center;
+            padding: 32px 20px;
+            background: #f8fafc;
+            border-radius: 24px;
+            transition: 0.2s;
+        }
+        .feature-card i {
+            font-size: 2.5rem;
+            color: #4f46e5;
+            margin-bottom: 20px;
+        }
+        .feature-card h3 {
+            margin-bottom: 12px;
+        }
+
+        /* Courses */
+        .courses {
+            background: #f1f5f9;
+            padding: 80px 0;
+        }
+        .courses-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+        }
+        .course-card {
+            background: white;
+            border-radius: 28px;
+            overflow: hidden;
+            width: 320px;
+            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05);
+            transition: transform 0.2s;
+        }
+        .course-card:hover {
+            transform: translateY(-8px);
+        }
+        .course-img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+        .course-info {
+            padding: 24px;
+        }
+        .course-info h3 {
+            font-size: 1.4rem;
+            margin-bottom: 12px;
+        }
+        .course-info p {
+            color: #475569;
+            margin-bottom: 20px;
+        }
+        .price {
+            font-weight: 700;
+            font-size: 1.3rem;
+            color: #4f46e5;
+            margin-bottom: 16px;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 80px 0;
+            background: white;
+        }
+        .testi-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+        }
+        .testi-card {
+            background: #f8fafc;
+            border-radius: 24px;
+            padding: 28px;
+            max-width: 350px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+        }
+        .testi-card p {
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+        .author {
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .author img {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        /* CTA */
+        .cta {
+            background: #4f46e5;
+            color: white;
+            padding: 70px 0;
+            text-align: center;
+        }
+        .cta h2 {
+            font-size: 2rem;
+            margin-bottom: 16px;
+        }
+        .cta p {
+            margin-bottom: 32px;
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        .cta .btn-primary {
+            background: white;
+            color: #4f46e5;
+        }
+        .cta .btn-primary:hover {
+            background: #f1f5f9;
+        }
+
+        /* Footer */
+        footer {
+            background: #0f172a;
+            color: #cbd5e1;
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        /* Form */
+        .form-group {
+            margin-bottom: 20px;
+        }
+        input {
+            width: 100%;
+            padding: 14px 18px;
+            border-radius: 40px;
+            border: 1px solid #cbd5e1;
+            font-family: inherit;
+        }
+        .inline-form {
+            max-width: 500px;
+            margin: 0 auto;
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .inline-form input {
+            flex: 2;
+            min-width: 200px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                gap: 20px;
+                padding: 20px 0;
+            }
+            .nav.show {
+                display: flex;
+            }
+            .mobile-menu-btn {
+                display: block;
+            }
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+            .hero-grid {
+                flex-direction: column-reverse;
+            }
+            .section-title {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-inner">
+                <div class="logo">Edu<span>Master</span></div>
+                <div class="mobile-menu-btn" id="menuBtn">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <div class="nav" id="navMenu">
+                    <a href="#home">Главная</a>
+                    <a href="#courses">Курсы</a>
+                    <a href="#about">О нас</a>
+                    <a href="#testimonials">Отзывы</a>
+                    <a href="#contact" class="btn-outline">Войти</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-grid">
+                <div class="hero-content">
+                    <h1>Образование, которое меняет жизнь</h1>
+                    <p>Практические онлайн-курсы от экспертов. Начните свой путь к новой профессии уже сегодня!</p>
+                    <a href="#courses" class="btn-primary">Выбрать курс</a>
+                    <a href="#contact" class="btn-secondary" style="margin-left: 16px;">Попробовать бесплатно</a>
+                </div>
+                <div class="hero-image">
+                    <img src="https://placehold.co/600x400/4f46e5/white?text=Learning+Illustration" alt="Образование">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="features">
+        <div class="container">
+            <h2 class="section-title">Почему выбирают нас?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fas fa-chalkboard-user"></i>
+                    <h3>Эксперты-практики</h3>
+                    <p>Преподаватели из топовых компаний</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-clock"></i>
+                    <h3>Гибкий график</h3>
+                    <p>Учитесь в удобное время, доступ навсегда</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-certificate"></i>
+                    <h3>Сертификат</h3>
+                    <p>Подтверждение квалификации</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-users"></i>
+                    <h3>Комьюнити</h3>
+                    <p>Общение с единомышленниками</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="courses" class="courses">
+        <div class="container">
+            <h2 class="section-title">Наши популярные курсы</h2>
+            <div class="courses-grid">
+                <div class="course-card">
+                    <img class="course-img" src="https://placehold.co/600x400/2563eb/white?text=Web+Development" alt="Веб-разработка">
+                    <div class="course-info">
+                        <h3>Веб-разработка с нуля</h3>
+                        <p>HTML, CSS, JavaScript, React. Создавайте современные сайты и приложения.</p>
+                        <div class="price">29 900 ₽</div>
+                        <a href="#" class="btn-primary" style="padding: 10px 20px;">Записаться</a>
+                    </div>
+                </div>
+                <div class="course-card">
+                    <img class="course-img" src="https://placehold.co/600x400/ea580c/white?text=Data+Science" alt="Аналитика">
+                    <div class="course-info">
+                        <h3>Data Science & AI</h3>
+                        <p>Python, машинное обучение, нейросети. Востребованная профессия будущего.</p>
+                        <div class="price">39 900 ₽</div>
+                        <a href="#" class="btn-primary" style="padding: 10px 20px;">Записаться</a>
+                    </div>
+                </div>
+                <div class="course-card">
+                    <img class="course-img" src="https://placehold.co/600x400/16a34a/white?text=UX+UI+Design" alt="Дизайн">
+                    <div class="course-info">
+                        <h3>UX/UI дизайн</h3>
+                        <p>Figma, прототипирование, дизайн-системы. Станьте профессионалом в дизайне.</p>
+                        <div class="price">24 900 ₽</div>
+                        <a href="#" class="btn-primary" style="padding: 10px 20px;">Записаться</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <h2 class="section-title">Что говорят студенты</h2>
+            <div class="testi-grid">
+                <div class="testi-card">
+                    <p>"Курс по веб-разработке дал мне уверенность и реальные навыки. Через 2 месяца я уже делал коммерческие проекты!"</p>
+                    <div class="author">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="avatar">
+                        <div>Анна Смирнова <br><span style="font-size: 0.8rem;">Frontend-разработчик</span></div>
+                    </div>
+                </div>
+                <div class="testi-card">
+                    <p>"Отличная подача материала. Поддержка наставников помогла быстро разобраться в сложных темах Data Science."</p>
+                    <div class="author">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="avatar">
+                        <div>Дмитрий Орлов <br><span style="font-size: 0.8rem;">Аналитик данных</span></div>
+                    </div>
+                </div>
+                <div class="testi-card">
+                    <p>"Обучение в удобном формате, много практики. После курса по UX/UI я сменила работу и увеличила доход."</p>
+                    <div class="author">
+                        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="avatar">
+                        <div>Екатерина Волкова <br><span style="font-size: 0.8rem;">UX/UI дизайнер</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="cta">
+        <div class="container">
+            <h2>Готовы начать обучение?</h2>
+            <p>Оставьте заявку, и мы подберем для вас идеальный курс</p>
+            <form class="inline-form" action="#" method="post">
+                <input type="email" placeholder="Ваш e-mail" required>
+                <button type="submit" class="btn-primary">Получить консультацию</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>© 2026 EduMaster. Все права защищены. Учебный проект для дипломной работы.</p>
+            <p style="margin-top: 12px;">
+                <i class="fab fa-telegram"></i>   
+                <i class="fab fa-vk"></i>   
+                <i class="fab fa-youtube"></i>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Мобильное меню
+        const menuBtn = document.getElementById('menuBtn');
+        const navMenu = document.getElementById('navMenu');
+        menuBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('show');
+        });
+        // Плавная прокрутка для ссылок
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if(href === "#" || href === "") return;
+                const target = document.querySelector(href);
+                if(target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth' });
+                    if(navMenu.classList.contains('show')) navMenu.classList.remove('show');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
